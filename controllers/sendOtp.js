@@ -7,7 +7,7 @@ const sendOtp = async (req, res) => {
   try {
     const { email, otp } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        to: [{email: email}],
         subject: EmailSubjects.FORGOT_PASSWORD_OTP,
         html: otpEmailTemplate({
             title: 'Password Reset OTP',
@@ -29,7 +29,7 @@ const verifyuserotp = async (req, res) => {
   try {
     const { email, otp } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        to: [{email: email}],
         subject: EmailSubjects.REGISTER_VERIFICATION_OTP,
         html: otpEmailTemplate({
             title: 'Verify Your Account',
@@ -51,7 +51,7 @@ const certificationdone = async (req, res) => {
   try {
     const { email } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        to: [{email: email}],
         subject: EmailSubjects.CERTIFICATE_DONE,
         html: certificateDoneTemplate({
             title: "Certificate is Ready",
@@ -72,7 +72,7 @@ const projectdone = async (req, res) => {
   try {
     const { email, username } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        to: [{email: email}],
         subject: EmailSubjects.PROJECT_COMPLETED,
         html: certificateReviewAdminTemplate({
             title: 'Review And Issue Certificate',
