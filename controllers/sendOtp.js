@@ -7,9 +7,9 @@ const sendOtp = async (req, res) => {
   try {
     const { email, otp } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        email: email,
         subject: EmailSubjects.FORGOT_PASSWORD_OTP,
-        html: otpEmailTemplate({
+        content: otpEmailTemplate({
             title: 'Password Reset OTP',
             otp: otp,
             message: 'Use the following OTP to reset your password.'
@@ -29,9 +29,9 @@ const verifyuserotp = async (req, res) => {
   try {
     const { email, otp } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        email: email,
         subject: EmailSubjects.REGISTER_VERIFICATION_OTP,
-        html: otpEmailTemplate({
+        content: otpEmailTemplate({
             title: 'Verify Your Account',
             otp: otp,
             message: 'Use the OTP below to verify your account.'
@@ -51,9 +51,9 @@ const certificationdone = async (req, res) => {
   try {
     const { email } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        email: email,
         subject: EmailSubjects.CERTIFICATE_DONE,
-        html: certificateDoneTemplate({
+        content: certificateDoneTemplate({
             title: "Certificate is Ready",
             message: "We are pleased to inform you that you have successfully completed your internship. Your certificate is now available on the BroCode platform."
         })
@@ -72,9 +72,9 @@ const projectdone = async (req, res) => {
   try {
     const { email, username } = req.query;
     const emailResponse = await SendEmail.Send({
-        to: email,
+        email: email,
         subject: EmailSubjects.PROJECT_COMPLETED,
-        html: certificateReviewAdminTemplate({
+        content: certificateReviewAdminTemplate({
             title: 'Review And Issue Certificate',
             internName: username
         })
