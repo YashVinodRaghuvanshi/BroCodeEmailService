@@ -16,7 +16,10 @@ const sendOtp = async (req, res) => {
         })
     });
 
-    return emailResponse;
+    return res.status(200).json({
+      success: true,
+      message: "OTP sent successfully"
+    });
 
   } catch (err) {
     console.error("SEND OTP ERROR:", err.response?.data || err.message);
@@ -38,7 +41,10 @@ const verifyuserotp = async (req, res) => {
         })
     });
 
-    return emailResponse;
+    return res.status(200).json({
+      success: true,
+      message: "OTP sent successfully"
+    });
 
   } catch (err) {
     console.error("VERIFY OTP ERROR:", err.response?.data || err.message);
@@ -59,7 +65,10 @@ const certificationdone = async (req, res) => {
         })
     });
 
-    return emailResponse;
+    return res.status(200).json({
+      success: true,
+      message: "OTP sent successfully"
+    });
 
   } catch (err) {
     console.error("CERT DONE ERROR:", err.response?.data || err.message);
@@ -80,7 +89,10 @@ const projectdone = async (req, res) => {
         })
     });
 
-    return emailResponse;
+    return res.status(200).json({
+      success: true,
+      message: "OTP sent successfully"
+    });
 
   } catch (err) {
     console.error("PROJECT DONE ERROR:", err.response?.data || err.message);
