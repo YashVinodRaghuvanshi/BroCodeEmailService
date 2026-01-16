@@ -176,7 +176,7 @@ const otpEmailTemplate = ({ title, otp, message }) => {
 
                 <tr>
                     <td style="padding-top:30px; font-size:12px; color:#aaa;" align="center">
-                    © ${new Date().getFullYear()} Brocode Savitech
+                    © ${new Date().getFullYear()} Brocoders
                     </td>
                 </tr>
 
@@ -339,7 +339,7 @@ const certificateDoneTemplate = ({ title, message }) => {
               <tr>
                 <td style="padding-top:25px; text-align:center; color:#6b7280; font-size:12px;">
                   <p style="margin:0;">
-                    © ${new Date().getFullYear()} BroCode Internship Program
+                    © ${new Date().getFullYear()} Brocoders
                   </p>
                   <p style="margin:6px 0 0 0;">
                     This is an automated email. Please do not reply.
@@ -412,7 +412,7 @@ const certificateReviewAdminTemplate = ({ title, internName }) => {
               <tr>
                 <td style="padding-top:25px; text-align:center; color:#6b7280; font-size:12px;">
                   <p style="margin:0;">
-                    BroCode Internship Platform
+                    Brocoders Platform
                   </p>
                   <p style="margin:6px 0 0 0;">
                     System Notification • Do not reply
