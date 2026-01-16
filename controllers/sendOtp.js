@@ -100,6 +100,29 @@ const projectdone = async (req, res) => {
   }
 };
 
+/* ---------------- SITE IS LIVE NOW ---------------- */
+const siteislive = async (req, res) => {
+  try {
+    const { email } = req.query;
+    const emailResponse = await SendEmail.Send({
+        email: email,
+        subject: EmailSubjects.SITE_LIVE,
+        content: siteLiveTemplate({
+            title: 'Brocoders Is Live 🚀 Start Building Real Projects'
+        })
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: "Email sent successfully"
+    });
+
+  } catch (err) {
+    console.error("SITE LIVE ERROR:", err.response?.data || err.message);
+    return res.status(500).json({ success: false });
+  }
+};
+
 const otpEmailTemplate = ({ title, otp, message }) => {
     return `
     <!DOCTYPE html>
@@ -165,6 +188,101 @@ const otpEmailTemplate = ({ title, otp, message }) => {
     </html>
     `;
 };
+
+const siteLiveTemplate = ({ title, launchUrl = 'https://www.brocoders.in' }) => {
+  return `
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>${title}</title>
+    </head>
+
+    <body style="margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif;">
+      <table width="100%" cellpadding="0" cellspacing="0" style="background-color:#f4f6f8;">
+        <tr>
+          <td align="center" style="padding:30px 15px;">
+
+            <table width="100%" cellpadding="0" cellspacing="0"
+              style="max-width:520px; background:#ffffff; border-radius:12px; padding:36px; box-shadow:0 10px 25px rgba(0,0,0,0.05);">
+
+              <!-- Header -->
+              <tr>
+                <td align="center" style="padding-bottom:20px;">
+                  <h2 style="margin:0; color:#111827; font-size:24px;">
+                    🚀 Brocoders is Live!
+                  </h2>
+                </td>
+              </tr>
+
+              <!-- Divider -->
+              <tr>
+                <td style="padding:12px 0;">
+                  <hr style="border:none; border-top:1px solid #e5e7eb;" />
+                </td>
+              </tr>
+
+              <!-- Message -->
+              <tr>
+                <td style="color:#374151; font-size:14px; line-height:22px;">
+                  <p style="margin:0 0 14px 0;">
+                    Hello,
+                  </p>
+
+                  <p style="margin:0 0 14px 0;">
+                    Thanks for showing interest in <strong>Brocoders</strong> during our early launch.
+                    We’re excited to let you know that the platform is now officially live 🎉
+                  </p>
+
+                  <p style="margin:0 0 14px 0;">
+                    You can now experience our internship-style learning journey:
+                  </p>
+
+                  <ul style="padding-left:18px; margin:0 0 16px 0;">
+                    <li>Skill-based MCQ assessment</li>
+                    <li>Random real-world projects via spinning wheel</li>
+                    <li>3 difficulty levels to challenge yourself</li>
+                    <li>Project completion certificate</li>
+                  </ul>
+
+                  <p style="margin:0 0 20px 0;">
+                    Start building real projects and level up your development skills today.
+                  </p>
+
+                  <!-- CTA Button -->
+                  <div style="text-align:center; margin-top:10px;">
+                    <a href="${launchUrl}"
+                      style="background:#2563eb; color:#ffffff; text-decoration:none;
+                      padding:12px 24px; border-radius:8px; font-weight:600; display:inline-block;">
+                      Start Your Journey
+                    </a>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Footer -->
+              <tr>
+                <td style="padding-top:30px; text-align:center; color:#6b7280; font-size:12px;">
+                  <p style="margin:0;">
+                    © ${new Date().getFullYear()} Brocoders
+                  </p>
+                  <p style="margin:6px 0 0 0;">
+                    You received this email because you signed up for early updates.
+                  </p>
+                </td>
+              </tr>
+
+            </table>
+
+          </td>
+        </tr>
+      </table>
+    </body>
+  </html>
+  `;
+};
+
 
 const certificateDoneTemplate = ({ title, message }) => {
   return `
@@ -317,5 +435,6 @@ module.exports = {
   sendOtp,
   verifyuserotp,
   certificationdone,
-  projectdone
+  projectdone,
+  siteislive
 };

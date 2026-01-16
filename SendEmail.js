@@ -8,7 +8,7 @@ const SendEmail = {
               "https://api.brevo.com/v3/smtp/email",
               {
                 sender: {
-                  name: "Bro Code",
+                  name: "Brocoders",
                   email: "brocodesavitech@gmail.com"
                 },
                 to: [

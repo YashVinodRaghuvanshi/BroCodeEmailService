@@ -1,5 +1,5 @@
 const express = require("express");
-const {sendOtp, verifyuserotp, certificationdone, projectdone} = require("./controllers/sendOtp");
+const {sendOtp, verifyuserotp, certificationdone, projectdone, siteislive} = require("./controllers/sendOtp");
 const cors = require("cors");
 const app = express();
 
@@ -13,6 +13,7 @@ app.get('/forgotpasswordotp', sendOtp);
 app.get('/userverificationotp', verifyuserotp);
 app.get('/certificationdone', certificationdone);
 app.get('/projectcompleted', projectdone);
+app.get('/siteislive', siteislive);
 
 const start = async () => {
     try 
